@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfESIME.com - Perfil Docente</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1>ProfESIME.com</h1>
+        </div>
+    </nav>
+    <main>
+        <h2>Perfil del docente </h2>
+        <h4>
+            <% if(Object.keys(data).length !== 0){ %>
+                <%= data[0].Nombre_Docentes %> <%= data[0].Apellido_Paterno_Docentes%> <%= data[0].Apellido_Materno_Docentes %>
+            <% } %>
+        </h4>
+
+        <% var x=0; if (comentarios) { %>
+            <% for(var i = 0; i < comentarios.length; i++) { %>
+
+                <% x = x + comentarios[i].Calificacion %>
+
+            <% } x = x/comentarios.length; x = x.toFixed(2);  %>
+        <% } %>
+
+
+        <h4>Calificación general: <%= x %></h4>
+    </main>
+    <div class="derecha-cal">
+
+        <h4>La calificacion es: <%= x %> </h4>
+
+    </div>
+    <h4>Materias que imparte:</h4>
+    <div>
+        <table>
+            <thead> 
+                <th>Materia</th>
+            </thead>
+
+            <tbody>
+                <% if (data) { %>
+                    <% for(var i = 0; i < data.length; i++) { %>
+
+                        <tr>
+                            <td><%= data[i].Nombre_Materias %></td>
+                        </tr>
+
+                    <% } %>
+                <% } %>
+            </tbody>
+         
+        </table>
+    </div>
+    <div class="derecha-com">
+        <table>
+            <thead> 
+                <th>Comentarios</th>
+            </thead>
+
+            <tbody>
+                <% if (comentarios) { %>
+                    <% for(var i = 0; i < comentarios.length; i++) { %>
+
+                        <tr>
+                            <td><%= comentarios[i].Comentario %></td>
+                        </tr>
+
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+    <div class="comment-buttons-container">
+        <% if(Object.keys(data).length !== 0){ %>
+            <button type="button" onclick="location.href='/agregarcomentario/<%= data[0].ID_Docente %>'">Agregar comentario</button>
+            <button onclick="location.href='/modificarcomentario/<%= data[0].ID_Docente %>'">Modificar comentario</button>
+        <% } %>
+    </div>    
+    <div class="bottom-buttons">
+        <button type="button" onclick="location.href='/docentes'">Regresar</button>
+        <button type="button" onclick="location.href='/materias'">Materias</button>
+    </div>
+</body>
+</html>

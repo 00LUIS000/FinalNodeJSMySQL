@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfESIME.com - Perfil Docente</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1>ProfESIME.com</h1>
+        </div>
+    </nav>
+    <main>
+        <h2>Modificar Comentario %></h2>
+    </main>
+
+<form action="/updatecomentario/<%= data[0].ID_Docente %>" method="post">
+    <div>
+        <label>Seleccióne la materia: </label>
+        <select id="materia" name="materia" class="select-field">
+           
+                <option value="<%= data[0].Nombre_Materia %>"><%= data[0].Nombre_Materia %></option>
+           
+        </select>
+       
+    </div>
+    
+    <div>
+        <label>Selecióne una calificación: </label>
+        <select id="calf" name="calificacion" class="select-field">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        </select>
+    </div>
+     
+    <div class="coment-tag">
+        <textarea name="comentario" id="comen" placeholder="Agruegue algun comentario" ><%= data[0].Comentario %></textarea>
+    </div>
+    
+    <input type="hidden" name="ID_Docente" value="<%= data[0].ID_Docente %>">
+
+    <div class="bottom-buttons">
+        <button type="button" onclick="location.href='/perfildocentes/<%= data[0].ID_Docente %>'">Regresar</button>
+        <button type="submit">Modificar</button>
+    </div>
+
+</form>
+
+</body>
+</html>

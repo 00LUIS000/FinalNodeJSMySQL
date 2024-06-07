@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProfESIME.com - Menú</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <h1>ProfESIME.com</h1>
+        </div>
+    </nav>
+    <main>
+        <div class="menu-button-container-two">
+            <button type="button" class="left-button" onclick="location.href='/menu'">Menú</button>
+            <button type="button" class="right-button" onclick="location.href='/materias'">Regresar</button>
+        </div>
+        <div class="search-container">
+            <h2>Los maestros que imparten la materia de <%= data[0].Nombre_Materias%> son:</h2>
+        </div>
+        <div class="table-container">
+            <table>
+
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                </thead>
+
+                <tbody>
+
+                    <% if (data) { %>
+                        <% for(var i = 0; i < data.length; i++){ %>
+
+                            <tr>
+                                <td><%= data[i].Nombre_Docentes %></td>
+                                <td><%= data[i].Apellido_Paterno_Docentes %></td>
+                                <td><%= data[i].Apellido_Materno_Docentes %></td>
+
+                                <td><a href="/perfildocentes/<%= data[i].ID_Docente %>" class="button-container">Ir</a></td>    
+
+                            </tr>
+
+                        <% } %>
+                    <% } %>
+                   
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
